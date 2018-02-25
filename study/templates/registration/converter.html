@@ -1,0 +1,31 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+<body>
+<h1>{{ title }}</h1>
+<form method="POST" >{% csrf_token %} 
+	<div class="form-group input-group">
+		<label for="convertfrom" >Convert From</label>
+	<dd>{{form.convertfrom}}</dd>
+</div>
+	<div class="form-group">
+		<label for="convertto" name='convertto'>Convert To</label>
+	<dd>{{form.convertto}}</dd>
+</div>	
+<div class="form-group">
+		<label for="amount">Amount</label>
+	<dd>{{form.amount}}</dd>
+</div>	
+
+<input class="btn btn-info" type="submit" value ="Submit">
+</form>
+<p>{{print}}</p>
+</body>
+</html>

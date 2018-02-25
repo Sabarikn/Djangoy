@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+
+</head>
+<body>
+<h1>Hello</h1>
+{% if user.is_authenticated %}
+<h1>{%for item in leaderboard%}</h1>
+<p>{{item.name}}      {{item.pk}}   <form action="{% url 'delete' pk=item.pk %}" method="POST">{%csrf_token%}<input type="submit" value="delete" /></form> </p>
+{% endfor %}
+
+{%else%}
+<h1>{%for item in leaderboard%}</h1>
+<p>{{item.name}}      {{item.pk}}  </p>
+{% endfor %}
+{%endif%}
+
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Home</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body >
+    {% if user.is_authenticated %}
+    <p>hello</p>
+    <p>welcome {{ user.username }}</p>
+    <p><a href="/logout" class="btn btn-info" role="button" >Logout</a></p>
+    <p><a href="/converter" class="btn btn-info" role="button">Currency converter</a></p>
+    {% else %}
+    <p><a href="/login" class="btn btn-info" role="button">Login</a></p>
+    <p><a href="/register" class="btn btn-info" role="button">Register</a></p>
+    {% endif %}
+    <script src = "{% static 'js/bootstrap.js' %}"></script>
+                    <script src = "{% static 'js/bootstrap.min.js' %}"></script>
+        {% block javascript %}
+        {% endblock %}
+
+</body>
+
+</html>

@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-
+# import django.contrib.auth
+# django.contrib.auth.LOGIN_URL = '/'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+# LOGIN_REDIRECT_URL = '/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -43,6 +44,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'love',
+    'leaderboard',
+    'mysite',
+    'currency',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,10 +88,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
-
-
 # Internationalization
 # https://docs.djangoproj TIME_ZONE = 'UTC'
 
@@ -106,5 +112,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,"staticpro","staticroot")
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,"staticpro","ourstatic"),
-)
+     os.path.join(BASE_DIR,"staticpro","ourstatic"),
+    )
+
+
+LOGIN_REDIRECT_URL = '/'

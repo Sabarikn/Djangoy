@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <p>hello</p>
+    <p>welcome {{ user.username }}</p>
+    <p><a href="/add">Add</a></p>
+<!--     <p><a href="/delete">Delete</a></p>
+ -->    <p><a href="/show">Show Leaderboard</a></p>
+    {% else %}
+    <p><a href="/show">Show Leaderboard</a></p>
+    {% endif %}
+</body>
+
+</html>

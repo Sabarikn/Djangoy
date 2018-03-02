@@ -8,24 +8,36 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
 </head>
-<body>
+<body style="background-image: url({%static 'img/123.jpg'%})">
+	<nav class="navbar navbar-default">
+        <div class="container-fluid" >
+            <!-- <div class="navbar-header">
+                <a class="navbar-brand" href="/">Leaderboard</a>
+            </div>
+             --><ul class="nav navbar-nav">
+        <li><a href="/currency" >Home</a></li>
+      <li><a href="/currency/logout2/">Logout</a></li>
+      <li class="active"><a href="/converter">Currency Converter</a></li>
+    </ul>
+</div>
+</nav>
 <h1>{{ title }}</h1>
 <form method="POST" >{% csrf_token %} 
 	<div class="form-group input-group">
-		<label for="convertfrom" >Convert From</label>
+		<label style="color: white;" for="convertfrom" >Convert From</label>
 	<dd>{{form.convertfrom}}</dd>
 </div>
 	<div class="form-group">
-		<label for="convertto" name='convertto'>Convert To</label>
+		<label style="color: white;" for="convertto" name='convertto'>Convert To</label>
 	<dd>{{form.convertto}}</dd>
 </div>	
 <div class="form-group">
-		<label for="amount">Amount</label>
+		<label  style="color: white;" for="amount">Amount</label>
 	<dd>{{form.amount}}</dd>
 </div>	
 
 <input class="btn btn-info" type="submit" value ="Submit">
 </form>
-<p>{{print}}</p>
+<p style="color: white;">{{print}}</p>
 </body>
 </html>

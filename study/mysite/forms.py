@@ -17,7 +17,7 @@ class UserRegistrationForm(forms.Form):
         label = 'Username',
         max_length = 32
     )
-    email = forms.CharField(
+    email = forms.EmailField(
         required = True,
         label = 'Email',
         max_length = 32,
@@ -28,3 +28,12 @@ class UserRegistrationForm(forms.Form):
         max_length = 32,
         widget = forms.PasswordInput()
     )
+    def clean(self):
+        uname = self.cleaned_data["username"]
+        email = self.cleaned_data["email"]
+        password = self.cleaned_data["password"]
+        if  (User.objects.filter(username=uname).exists() or User.objects.filter(email=email).exists()):
+            raise forms.ValidationError("Username or Email Exists")
+        else:
+            return self.cleaned_data
+

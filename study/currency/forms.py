@@ -26,7 +26,7 @@ class LoginForm(forms.ModelForm):
  	# fullname = forms.CharField(max_length=120,blank=False)
  	class Meta:
  		model = Login
- 		fields = ['fullname','password']
+ 		fields = ['username','password']
 class Converter(forms.ModelForm):
 	amount = forms.IntegerField(required = True,label = 'value')
 	class Meta:

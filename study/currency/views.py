@@ -25,14 +25,14 @@ def login1(request):
 	if form.is_valid():
 		print(request,form.cleaned_data)
 		userObj=form.cleaned_data
-		username = userObj['fullname']
+		username = userObj['username']
 		password =  userObj['password']
 		try:
 			user=authenticate(username = username, password = password)
 			login(request,user)
-			return HttpResponseRedirect('/')
+			return HttpResponseRedirect('/currency')
 		except:
-			return HttpResponseRedirect('/login1')
+			return HttpResponseRedirect('currency/login')
 		# instance = form.save(commit=False)
 		# fullname=form.cleaned_data.get('fullname')
 		# if not fullname:
@@ -47,7 +47,7 @@ def login1(request):
 		# ""
 	 #    }
 		
-	return render(request,"forrms.html",context)
+	return render(request,"registration/login.html",context)
 
 
 def register(request):
@@ -63,14 +63,14 @@ def register(request):
                 User.objects.create_user(username, email, password)
                 user = authenticate(username = username, password = password)
                 login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/currency')
             else:
                 raise forms.ValidationError('Looks like a username with that email or password already exists')
 
     else:
         form = UserRegistrationForm()
 
-    return render(request, 'registration/register.html', {'form' : form})
+    return render(request, 'registration/registration.html', {'form' : form})
 
 
 

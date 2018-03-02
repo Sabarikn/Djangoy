@@ -1,0 +1,45 @@
+{%if form.ValidationError %}
+<p>Somethingv is wrong</p>
+{%endif%}
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<style type="text/css">
+	#outPopUp {
+  position: absolute;
+  /*width: 300px;*/
+  /*height: 200px;*/
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  border-style:solid; 
+  padding: 20px; 
+  margin: -100px 0 0 -150px;
+  
+}
+</style>
+</head>
+<body style="background-image: url({%static 'img/124.jpg'%})">
+
+<form method="POST" action="">{% csrf_token %} 
+	<div id="outPopUp">
+		<h1>Currency Converter</h1>
+		<p style="text-align: center; font-style: italic; font-size: 200%; ">Enter Valid details to login</p>
+	<div class="form-group input-group">
+		<label for="username"  >Username</label>
+	<dd placeholder="User name" >{{form.username}}</dd>
+</div>
+	<div class="form-group">
+		<label for="Password">Password</label>
+	<dd>{{form.password}}</dd>
+</div>	
+<button class="btn btn-lg btn-primary " type="submit">Sign in</button>
+  </div>
+  </form>
+</body>
+</html>

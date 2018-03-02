@@ -13,28 +13,43 @@ from .models import Leaderboard
 def home(request):
     return render(request, 'home.html')
 
+# def register(request):
+#     if request.method == 'POST':
+#         form = UserRegistrationForm(request.POST)
+#         print(request)
+#         if form.is_valid():
+#             userObj = form.cleaned_data
+#             username = userObj['username']
+#             email =  userObj['email']
+#             password =  userObj['password']
+#             if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
+#                 User.objects.create_user(username, email, password)
+#                 user = authenticate(username = username, password = password)
+#                 login(request, user)
+#                 return HttpResponseRedirect('/')
+#             else:
+#                 raise forms.ValidationError('Looks like the username  already exists')
+
+
+#     else:
+#         form = UserRegistrationForm()
+
+#     return render(request, 'register.html', {'form' : form})
 def register(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UserRegistrationForm(request.POST)
-        print(request)
         if form.is_valid():
             userObj = form.cleaned_data
             username = userObj['username']
             email =  userObj['email']
             password =  userObj['password']
-            if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
-                User.objects.create_user(username, email, password)
-                user = authenticate(username = username, password = password)
-                login(request, user)
-                return HttpResponseRedirect('/')
-            else:
-                raise forms.ValidationError('Looks like a username with that email or password already exists')
-
+            User.objects.create_user(username, email, password)
+            user = authenticate(username = username, password = password)
+            login(request, user)
+            return HttpResponseRedirect('/')
     else:
         form = UserRegistrationForm()
-
-    return render(request, 'registration/register.html', {'form' : form})
-
+    return render(request, 'register.html', {'form' : form})
 
 
 def add(request):
@@ -83,7 +98,7 @@ def delete(request,pk):
         message="Deleted"
         Leaderboard.objects.filter(id=pk).delete()
     else:
-        message="unsuccessfull"
+        message="Unsuccessfull cannot delete other's data"
     le2=Leaderboard.objects.all()
     context={
         "title":message,
@@ -92,13 +107,13 @@ def delete(request,pk):
     
     return render(request,"leaderboard.html",context)
 
-def home1(request):
-    # form = SignUpForm(request.POST or None )
-    title="Welcome To Leaderboard"
-    context={
-        "template_title": title
-        }
-    return render(request,"leader.html",context)
+# def home1(request):
+#     # form = SignUpForm(request.POST or None )
+#     title="Welcome To Leaderboard"
+#     context={
+#         "template_title": title
+#         }
+#     return render(request,"leaderboard.html",context)
 
 
 

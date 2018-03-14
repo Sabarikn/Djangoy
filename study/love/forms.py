@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Login
+from .models import Tweet
 
 # class ContactForm(forms.Form):
 # 	fullname = forms.CharField()
@@ -21,12 +21,11 @@ from .models import Login
 # 		if not "edu" == email.split('.')[-1]:
 # 			raise forms.ValidationError("please use a valid .edu email address")
 # 		return email
-class LoginForm(forms.ModelForm):
- 	password = forms.CharField(widget = forms.PasswordInput)
- 	# fullname = forms.CharField(max_length=120,blank=False)
+class TweetForm(forms.ModelForm):
+ 	 # fullname = forms.CharField(max_length=120,blank=False)
  	class Meta:
- 		model = Login
- 		fields = ['fullname','password']
+ 		model = Tweet
+ 		fields = ['fullname']
  	# def clean(self):
  	# 	try:
  	# 		if self.cleaned_data['fullname'] and self.cleaned_data['password']:
